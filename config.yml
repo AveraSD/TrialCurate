@@ -1,0 +1,21 @@
+
+# how define each part
+# trial_data_dir: "data/trials/" # path within main repo | absolute path according to your path
+# pt_data_file: "data/pt/ptdata.tsv" # path within main repo | absolute path absolute path according to your path
+# docker: "yes" # yes | no
+# storage: "db" # db | json
+
+# when TrialCurate runs on production enviornment 
+default:
+  trial_data_dir: "/data/trials/"
+  pt_data_file: "/data/pt/ptdata.tsv"
+  docker: "no"
+  storage: "json"
+
+# when TrialCurate runs on local/test enviornment 
+test: 
+  trial_data_dir: "data/trials/"
+  pt_data_file: "data/pt/ptdata.tsv"
+  docker: "no"
+  storage: "json"
+
