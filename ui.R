@@ -17,7 +17,7 @@ library(shinyjs)
 library(config)
 library(data.table)
 library(dplyr)
-library(here)
+library(here) 
 
 # sourced the files 
 source(here("R", "curateUI.R"))
@@ -59,10 +59,7 @@ ui <- tagList(
                         dis_form )
                
              )),
-    # tabPanel(
-    #   "Browse Trials"
-    # ),
-    
+   
     theme = bs_theme(version = 5, 
                      bootswatch = "cosmo",
                      primary = "#246725")

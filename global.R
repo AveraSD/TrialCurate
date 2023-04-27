@@ -1,4 +1,5 @@
 library(here)
+library(tidyverse)
 # get path to trials directory
 t_d_d <- config::get("trial_data_dir")
 trial_data_dir <- if_else(t_d_d %>% fs::is_absolute_path(), t_d_d, t_d_d %>% here())
