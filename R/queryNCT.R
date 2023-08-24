@@ -8,8 +8,18 @@ library(tidyverse)
 nctApi <- function(nct_id) {
   
   # API info and query params
-  base_url <- "https://clinicaltrials.gov/"
-  path <- "api/query/full_studies"
+ # base_url <- "https://clinicaltrials.gov/"   # URL before modernized/new API migration
+  
+  #Reference: https://clinicaltrials.gov/data-about-studies/api-migration
+  
+  base_url <- "https://classic.clinicaltrials.gov/"   # URL for keeping classic URL during migration
+  path <- "api/query/full_studies"                    # end point
+  
+  #new API base URL and path will be
+  #base_url <- "https://www.clinicaltrials.gov/" # URL for the new modernized 
+  #path <- "api/v2/full_studies"  # end point
+  
+  
   min_rnk <- 1
   max_rnk <- 1
   fmt <- "json"
