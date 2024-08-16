@@ -5,13 +5,21 @@ services:
 
     ports:
       - "3838:3838" # host:container
+    networks:
+      - app-net
     container_name: shinyapps
     extra_hosts:
       - "host.docker.internal:host-gateway"
+#adding environment variables
+    environment:
+      - MONGO_HOST=mongodba
+      - MONGO_PORT=27017
+      - MONGO_URL="mongodb://mongodba:27017/aci"
     depends_on:
       - mongodba
   mongodba:
     image: mongo:latest
+    restart: always
     ports:
       - "27017:27017"
     container_name: mongodba
@@ -19,9 +27,17 @@ services:
       #- ./data/db:/data/db:ro
      # - ./TrialCurate/data/trials:/data/trials
      # - ./TrialCurate/mongo/db_init.sh:/docker-entrypoint-initdb.d/db_init.sh:ro
-       - ./data/trials:/data/trials
-       - ./mongo/db_init.sh:/docker-entrypoint-initdb.d/db_init.sh:ro
+       - ./data/trials:/data/trials:rw
+       - ./data/oncotree:/data/oncotree:ro
+       - ./data/metadata:/data/metadata:ro
+       - ./data/pt:/data/pt:ro
 
+#       - ./mongo/db_init.sh:/docker-entrypoint-initdb.d/db_init.sh:ro
+    networks:
+      - app-net
+networks:
+ app-net:
+  name: app-net
 
 
 
