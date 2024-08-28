@@ -13,11 +13,17 @@ outSubmit <- function() {
                     paste0(tr2 %>% unnest(c(info, disease, query)) %>% select(NCT) %>% as.character(), ".full.ndjson"))
   
   # Connect to the MongoDB server
+  # mongo <- mongo(db = "aci", 
+  #                collection = "ClinicalTrials", 
+  #                url = "mongodb://127.0.0.1:27017")
+  
+  #connecting with service name
   mongo <- mongo(db = "aci", 
                  collection = "ClinicalTrials", 
-                 url = "mongodb://127.0.0.1:27017")
+                 url = "mongodb://mongodba:27017/aci")
   
   
+ 
   writeLines(tr2 %>% toJSON(pretty = T), outjson)
   
   json_data_file <- do.call(rbind, 
