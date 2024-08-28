@@ -7,9 +7,10 @@
 
 # when TrialCurate runs on production enviornment 
 default:
-  trial_data_dir: "/data/trials/"
+#  trial_data_dir: "/data/trials/"
+  trial_data_dir: "data/trials/"
   pt_data_file: "/data/pt/ptdata.tsv"
-  docker: "no"
+  docker: "yes"
   storage: "json"
 
 # when TrialCurate runs on local/test enviornment 
